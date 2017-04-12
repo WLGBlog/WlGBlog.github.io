@@ -1,0 +1,34 @@
+h1 {
+  font-size: 75px;
+  text-align: center;
+}
+
+body {
+  background-color: lightblue;
+  font-family: Helvetica;
+}
+
+.emailForm {
+  text-align: center;
+  margin: auto;
+  background-color: #606c7f;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  max-width: 250px;
+}
+
+#textarea {
+  padding: 1;
+  border: 0;
+  height: 15px;
+}
+
+#Submit {
+  padding: 1;
+  border: 0;
+  background-color: #ff6a3d;
+}
+
+#Submit:hover {
+  background-color: #ff521e;
+}
