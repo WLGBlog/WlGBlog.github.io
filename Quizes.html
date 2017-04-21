@@ -35,10 +35,12 @@ div {
       color: #0FF;
       text-align: center;
       border-radius: 10px;
+      -webkit-transition-duration: 0.4s; 
+      transition-duration: 0.4s;
     }
 
     #Result {
-      margin-top: 50px;
+      margin-top: 10px;
       width: 100%;
       height: 100px;
       max-height: 100px;
@@ -70,12 +72,13 @@ div {
     }
 </style>
 <script>
-      var pos = 0,
+  var pos = 0,
        test, test_status, question, choice, choices, chA, chB, chC, correct = 0;
      var questions = [
        ["What is num equal to?", "6", "5", "Potato", "A", "A Variable is something that can store data, like a number or a String (Some text). They can be written as an int or as a string. EXAMPLE: ", "https://s1.postimg.org/nqvwnr0un/Untitled.png"],
-       ["What is 7 x 3?", "21", "24", "25", "A"],
-       ["What is 8 / 2?", "10", "2", "4", "C"]
+       ["Which one is a string?", "'Hello'", "24", "25", "A", "A string is written as char stringName[];. EXAMPLE: ", "https://s9.postimg.org/v4nth2x5b/Untitled.png"],
+       ["What does this print?", "10", "2", "Hello", "C", "To print to the serial monitor you use Serial.print(SomeValue). EXAMPLE: ", "https://s24.postimg.org/csafcq8z9/Untitled.png"],
+       ["What is 'Hello '+'World'?", "Hello World", "An Integer", "Text", "A", "You can add Strings together. It is called concatenation. *If you do not add a space in either of the Strings it will not have any spaces. EXAMPLE: ", "https://s29.postimg.org/cgrq65vdj/Untitled.png"]
      ];
 
      function _(x) {
@@ -133,11 +136,10 @@ div {
            document.getElementById("result").style.display = "block";
            document.getElementById("result").innerHTML = "Correct!";
          }
-         else {
+         else if (correct === false){
            document.getElementById("Result").style.display = "block";
            document.getElementById("result").style.display = "block";
            document.getElementById("result").innerHTML = "Incorrect!";
-
          }
      }
      function reRender(){
