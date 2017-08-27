@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    
+    <style>
+        body{
+            background: #333;
+            margin-top: 70px;
+            color:#fff;
+            border-style: none;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="display-3 text-center mb-4">Calculator</h1>
+                <div class="card mb-2 card-primary">
+                    <div class="card-block">
+                        <form>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <input 
+                                        id="num1Input"
+                                        type="number"
+                                        class="form-control form-control-md"
+                                        value=0>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <select id="op" class="form-control">
+                                            <option>Add</option>
+                                            <option>Subtract</option>
+                                            <option>Multiply</option>
+                                            <option>Divide</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-5">
+                                        <input 
+                                        id="num2Input"
+                                        type="number"
+                                        class="form-control form-control-md"
+                                        value=0>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mb-2 card-success">
+                    <div class="card-block">
+                        <h4>Result:</h4>
+                        <div id="result">0</div>
+                    </div>
+                </div>
+
+                <div class="card card-danger">
+                    <div class="card-block">
+                        <div class="text-center">
+                            <button class="btn btn-danger" onclick="location.reload()"><h1>Clear Screen</h1></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calc(){
+            var num1 = parseInt(document.getElementById("num1Input").value)
+            var num2 = parseInt(document.getElementById("num2Input").value)
+            var op = document.getElementById("op").options[document.getElementById("op").selectedIndex].text
+            var result = document.getElementById("result")
+            var output = 0
+
+
+            function updateResult () {
+
+                if (op == "Add") {
+                    output = num1 + num2
+                } else if (op == "Subtract") {
+                    output = num1 - num2
+                } else if (op == "Multiply") {
+                    output = num1 * num2
+                } else if (op == "Divide") {
+                    output = num1 / num2
+                }
+
+                
+                if (String(output) == "NaN") {
+                    result.innerHTML = "Do not leave field empty!"
+                } else if (String(output) != "NaN") {
+                    result.innerHTML = String(output)
+                }
+
+            }
+
+            updateResult()
+        }
+        document.getElementById("num1Input").addEventListener('input', function(e){
+            calc()
+        });
+
+        document.getElementById("num2Input").addEventListener('input', function(e){
+            calc()
+        });
+
+        document.getElementById("op").addEventListener('input', function(e){
+            calc()
+        });
+        
+    </script>
+
+</body>
+</html>
