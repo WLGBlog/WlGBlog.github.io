@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <style>
+      
+      body {
+        font-family: Helvetica, sans-serif;
+      }
+      
+      #openBtn {
+        border: none;
+        background: coral;
+        color: #fff;
+        width: 110px;
+        height: 50px;
+      }
+      
+      #openBtn:hover {
+        background:red;
+        cursor: pointer;
+      }
+      
+      #closeBtn {
+        float: right;
+        padding-right: 20px;
+        color: #fff;
+      }
+      
+      #closeBtn:hover {
+        color: #000;
+        cursor: pointer;
+        transition-duration: 0.4;
+      }
+      
+      #modalContent {
+        padding-top: 10px;
+        padding-right: 20;
+        padding-bottom: 10px;
+        padding-left: 20px;
+      }
+      
+      #modal {
+        background: #fff;
+        width: 70%;
+        margin: 20% auto;
+        box-shadow: 5px 5px grey;
+        transition: .4s;
+        z-index: 2;
+        animation-name: modalopen;
+        animation-duration: 1s;
+      }
+      #modal-bg {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(51,51,51,0.5);
+        z-index: 1;
+        display: none;
+        left: 0;
+        top: 0;
+      }
+      
+      #m-header h3 {
+        margin: 0;
+      }
+      
+      #m-header {
+        background: coral;
+        color: #fff;
+        padding:15px;
+        left: 0;
+        top: 0;
+      }
+      
+      #m-footer h4 {
+        margin: 0;
+      }
+      
+      #m-footer {
+        background: coral;
+        color: #fff;
+        padding:15px;
+        bottom: 0;
+        right: 0;
+        left: 0;
+      }
+      
+      @keyframes modalopen{
+        from{opacity: 0}
+        to{opacity: 1}
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <button id='openBtn'>Click Here</button>
+    <div id="modal-bg">
+      <div id="modal" class="w3-animate-opacity">
+        <div id="m-header">
+            <span id="closeBtn">&times;</span>
+            <h3>Modal Header</h3>
+        </div>
+        <div id="modalContent">
+          <div id="modalTxt">I am a modal... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sagittis dolor ut venenatis hendrerit. Cras imperdiet sem ut nulla posuere auctor. Morbi et est eleifend, auctor diam sed, blandit magna. Suspendisse feugiat eros quis mi scelerisque, eu pellentesque neque scelerisque. Etiam tincidunt suscipit odio et rhoncus. Proin at metus ut ligula tempus venenatis eu a nulla. Vestibulum vitae elementum dolor, non vestibulum ante.</div>
+        </div>
+        <div id="m-footer">
+          <h4>Modal Footer</h4>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      var modal = document.getElementById('modal-bg');
+      var closeBtn = document.getElementById('closeBtn');
+      var openBtn = document.getElementById('openBtn');
+      
+      closeBtn.addEventListener('click', () => {
+        document.getElementById('modal-bg').style.display = 'none';
+      });
+      
+      openBtn.addEventListener('click', () => {
+        document.getElementById('modal-bg').style.display = 'block';
+      });
+      
+      window.addEventListener('click', (e) => {
+        if (e.target == modal) {
+          document.getElementById('modal-bg').style.display = 'none';
+        }
+      });
+      
+      
+    </script>
+    
+  </body>
+
+</html>
