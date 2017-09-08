@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <title>Math Quiz</title>
+    <style>
+      body {
+        background: #333;
+        color: #fff;
+      }
+      
+      .btn-blank {
+        color: #fff;
+        background: rgba(0,0,0,0);
+        font-size: 30px;
+      }
+      .btn-blank:hover{
+        cursor: pointer;  
+      }
+      
+      .col-md-12 {
+        display: initial;
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <h1 class="text-center display-4 mb-3">Math Quiz</h1>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-primary mb-3">
+            <div class="card-block">
+              <h4>Question:</h4>
+              <div id="questionBox"></div>
+            </div>
+          </div>
+          <div class="card card-danger mb-3">
+            <div class="card-block">
+              <h4>Answers:</h4>
+              <div class="form-group">
+                <form id="answers">
+                  <div class="radio">
+                    <label><input type="radio" name="optradio" value="1"> <span id="op1"></span></label>
+                  </div>
+                  <div class="radio">
+                    <label><input type="radio" name="optradio" value="2"> <span id="op2"></span></label>
+                  </div>
+                  <div class="radio">
+                    <label><input type="radio" name="optradio" value="3"> <span id="op3"></span></label>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="card card-success mb-3">
+            <div class="card-block">
+              <div class="text-center">
+                <button id="subBtn" class="btn btn-blank">Submit!</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      var questionBox = document.getElementById("questionBox");
+      var answerForm = document.getElementById("answers");
+      var subBtn = document.getElementById("subBtn");
+      
+      var op1 = document.getElementById("op1");
+      var op2 = document.getElementById("op2");
+      var op3 = document.getElementById("op3");
+      
+      var questions=['4+4','2+2'];
+      var answers=[['1','8','16'],['1','4','8']];
+      var correctAnswers=['2','2'];
+      
+      var currentQ = 0;
+      
+      var score=0;
+      
+      subBtn.addEventListener('click', () => {
+        calculate();
+        render();
+      });
+      
+      function calculate() {
+        var val = getRadioVal(answerForm, 'optradio');
+        
+        if (val == correctAnswers[currentQ]) {
+          score += 1;
+          currentQ+=1;
+        } else if (val == 'undefined') {
+          alert('no answer selected');
+        } else {
+          currentQ+=1;
+        }
+      }
+      
+      function render() {
+        if (currentQ==questions.length){
+          alert(score+'/'+questions.length);
+          location.reload();
+        }
+        //Render Question
+        questionBox.innerHTML = String(questions[currentQ]);
+        //Render Answers
+        renderAnswers();
+      }
+      
+      function renderAnswers(){
+        for(var i=0;i<answers[currentQ].length;i++){
+          if (i==0){
+            op1.innerHTML= answers[currentQ][i];
+          } else if (i==1){
+            op2.innerHTML= answers[currentQ][i];
+          } else if (i==2){
+            op3.innerHTML= answers[currentQ][i];
+          }
+        }
+      }
+      
+      function getRadioVal(form, name) {
+        var val;
+  
+        var radios = form.elements[name];
+        
+        
+        for (var i=0, len=radios.length; i<len; i++) {
+            if ( radios[i].checked ) {
+                val = radios[i].value;
+                break;
+            }
+        }
+        return val;
+      }
+      
+      render();
+      
+      
+      
+      
+    </script>
+    
+  </body>
+
+</html>
