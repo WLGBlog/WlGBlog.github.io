@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Read Contact</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="form" class="container">
+        <h3>Login</h3>
+        <form id="signin">
+            <input type="email" class="form-control" id="txtEmail" placeholder="Email">
+            <input type="password" class="form-control mb-3" id="txtPassword" placeholder="Password">
+        </form>
+        <button id="btnLogin" class="btn btn-primary">Login</button>
+        <button id="btnLogout" class="btn btn-info hide">Logout</button>
+    </div>
+    <h3 id="messagesTitle" class="mb-3 text-center">Messages</h3>
+    <p>
+        <ol id="messageList">
+        </ol>
+    </p>
+    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
