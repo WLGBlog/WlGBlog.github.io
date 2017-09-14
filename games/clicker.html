@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link data-require="bootstrap-css@4.0.0-alpha.4" data-semver="4.0.0-alpha.4" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <style>
+      .btn {
+        display: inline;
+        margin: 0;
+      }
+      
+      #clicks{
+        height: 100px;
+        padding: 1em;
+        font-family: impact, sans-serif;
+        font-size: 20px;
+        background: #333;
+        color: #fff;
+        width: 200px;
+        margin-bottom: 25px;
+        text-align: center;
+      }
+      
+      .row {
+        margin: auto;
+      }
+      
+      #scoreList {
+        
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div id="clicks"></div>
+      </div>
+      <div class="row">
+          <button id="clickBtn" class="btn btn-large btn-danger">CLICK ME!!</button>
+          <button id="saveBtn" class="btn btn-large btn-success">Save</button>
+      </div>
+      <ol id="scoreList"></ol>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
+    <script>
+      
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyCJT7nmBQc-5g8Qr10XlJfJb6ByLcz7_tE",
+        authDomain: "clicker-55a41.firebaseapp.com",
+        databaseURL: "https://clicker-55a41.firebaseio.com",
+        projectId: "clicker-55a41",
+        storageBucket: "clicker-55a41.appspot.com",
+        messagingSenderId: "18954001437"
+      };
+      firebase.initializeApp(config);
+      
+      var ref = firebase.database().ref('scores');
+      
+      const clickCount = document.getElementById('clicks');
+      const clickBtn = document.getElementById('clickBtn');
+      const saveBtn = document.getElementById('saveBtn');
+      
+      var clickArray = [100, 500, 1000, 5000, 10000, 50000, 100000];
+      var clickPowerArray = [5, 10, 50, 100, 500, 1000, 5000];
+      
+      var clickArrayCount = 0;
+      
+      var clicks = 0;
+      var clickPower = 1;
+      
+      displayScores();
+      
+      clickBtn.addEventListener('click', () => {
+        // Add a click to the number of clicks
+        clicks+=clickPower;
+        // Display Number Of Clicks
+        clickCount.innerHTML = parseInt(clicks);
+        
+        if (clicks === clickArray[clickArrayCount]) {
+          clickPower = clickPowerArray[clickArrayCount];
+          alert('You have '+clickArray[clickArrayCount]+' clicks!');
+          clickArrayCount+=1;
+        }
+      });
+      
+      saveBtn.addEventListener('click', () => {
+        var name = prompt('Enter Name (Leave Blank For Anonymous)');
+        if (name != '') {
+          saveScore(name, clicks);
+        } else {
+          saveScore('Anonymous', clicks);
+        }
+      }); 
+      
+      function saveScore(name, score){
+        var newRef = ref.push();
+        newRef.set({
+          name: name,
+          score: score
+        });
+      }
+      
+      function displayScores() {
+          ref.on('value', gotData, errData);
+      } 
+      
+      function gotData(data) {
+        var scores = data.val();
+        var keys = Object.keys(scores);
+        var scoreList = document.getElementById('scoreList');    
+        scoreList.innerHTML = "";
+        for (var i=0; i<keys.length; i++){
+          var k = keys[i];
+          var name = scores[k].name;
+          var score = scores[k].score;
+          scoreList.innerHTML += "<li>"+name+": "+score+"</li>"
+        }
+        
+      }
+      
+      function errData(err) {
+          console.log('Error!');
+          console.log(err);
+      }
+      
+    </script>
+  </body>
+
+</html>
