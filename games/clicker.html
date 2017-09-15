@@ -40,6 +40,9 @@
         <div id="clicks"></div>
       </div>
       <div class="row">
+        <h3 id="goal"></h3>
+      </div>
+      <div class="row">
           <button id="clickBtn" class="btn btn-large btn-danger">CLICK ME!!</button>
           <button id="saveBtn" class="btn btn-large btn-success">Save</button>
       </div>
@@ -64,14 +67,33 @@
       const clickCount = document.getElementById('clicks');
       const clickBtn = document.getElementById('clickBtn');
       const saveBtn = document.getElementById('saveBtn');
+      const goal = document.getElementById('goal');
       
-      var clickArray = [50, 100, 500, 1000, 5000, 10000, 50000, 100000];
-      var clickPowerArray = [5, 10, 50, 100, 500, 1000, 5000, 10000];
+      var clickArray = [50, 100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000];
+      var clickPowerArray = [5, 10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000];
       
       var clickArrayCount = 0;
       
       var clicks = 0;
       var clickPower = 1;
+      
+      function hasOneDayPassed(){
+        var date = new Date().toLocaleDateString();
+      
+        if( localStorage.yourapp_date == date ) 
+            return false;
+      
+        localStorage.yourapp_date = date;
+        return true;
+      }
+      
+      function runOncePerDay(){
+        if( !hasOneDayPassed ) return false;
+      
+        firebase.database().ref().remove();
+      }
+      
+      goal.innerHTML = 'Next goal: '+clickArray[clickArrayCount];
       
       displayScores();
       
@@ -84,6 +106,7 @@
         if (clicks === clickArray[clickArrayCount]) {
           clickPower = clickPowerArray[clickArrayCount];
           alert('You have '+clickArray[clickArrayCount]+' clicks!');
+          goal.innerHTML = 'Next goal: '+clickArray[clickArrayCount+1];
           clickArrayCount+=1;
         }
       });
