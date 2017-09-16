@@ -27,29 +27,62 @@
         margin: auto;
       }
       
+      #name {
+        margin: 20px auto;
+      }
+      
+      .hide {
+        display: none;
+      }
+      
       #scoreList {
-        
+        margin-top: 20px;
+      }
+      
+      #start {
+        margin: 0 auto;
       }
       
     </style>
   </head>
 
   <body>
-    <div class="container">
+    <div id="start" class="container">
       <div class="row">
-        <div id="clicks"></div>
+        <div class="col-md-12">
+          <div class="text-center">
+            <h1 class="text-center display-4 mb-3">Welcome to the Clicker</h1>
+            <p>Press play to begin!</p>
+            <input type="text" id="name" class="form-control form-control-lg" placeholder="Enter Name..">
+            <button id="startBtn" class="btn btn-success btn-lg">Play!</button>
+          </div>
+        </div>
       </div>
-      <div class="row">
-        <h3 id="goal"></h3>
-      </div>
-      <div class="row">
-          <button id="clickBtn" class="btn btn-large btn-danger">CLICK ME!!</button>
-          <button id="saveBtn" class="btn btn-large btn-success">Save</button>
-      </div>
-      <ol id="scoreList"></ol>
     </div>
+    <div id="game" class="hide">
+      <div class="container">
+        <div class="row">
+          <h1 id="status" class="text-danger"></h1>
+        </div>
+        <div class="row">
+          <div id="clicks"></div>
+        </div>
+        <div class="row">
+          <h3 id="goal"></h3>
+        </div>
+        <div class="row">
+            <button id="clickBtn" class="btn btn-large btn-danger">CLICK ME!!</button>
+            <button id="saveBtn" class="btn btn-success">Save</button>
+        </div>
+        
+      </div>
+    </div>
+    <ol id="scoreList"></ol>
+    
     <script src="https://www.gstatic.com/firebasejs/4.3.1/firebase.js"></script>
     <script>
+    
+    
       
       // Initialize Firebase
       var config = {
@@ -64,38 +97,55 @@
       
       var ref = firebase.database().ref('scores');
       
+      var name;
+      
       const clickCount = document.getElementById('clicks');
       const clickBtn = document.getElementById('clickBtn');
       const saveBtn = document.getElementById('saveBtn');
       const goal = document.getElementById('goal');
+      const start = document.getElementById('start');
+      const game = document.getElementById('game');
+      const startBtn = document.getElementById('startBtn');
       
+      startBtn.addEventListener('click', () => {
+        start.classList.add('hide');
+        game.classList.remove('hide');
+        name = document.getElementById('name').value;
+        document.getElementById('name').classList.add('hide');
+        countDown(60,"status");
+      });
+    
+      function countDown(secs,elem) {
+      	var element = document.getElementById(elem);
+      	element.innerHTML = secs;
+      	var saved = false;
+      	if(secs < 1 && saved === false) {
+      		clearTimeout(timer);
+      		element.innerHTML = '';
+      		save();
+      		saveBtn.classList.add('hide');
+      		saved = true;
+      		start.classList.remove('hide');
+          game.classList.add('hide');
+      		return
+      	}
+      	secs-=1;
+      	var timer = setTimeout('countDown('+secs+',"'+elem+'")',1000);
+      }
       var clickArray = [50, 100, 500, 1000, 5000, 10000, 50000, 100000, 500000, 1000000];
       var clickPowerArray = [5, 10, 50, 100, 500, 1000, 5000, 10000, 50000, 100000];
+      var scoreArray = [];
       
       var clickArrayCount = 0;
       
       var clicks = 0;
       var clickPower = 1;
       
-      function hasOneDayPassed(){
-        var date = new Date().toLocaleDateString();
-      
-        if( localStorage.yourapp_date == date ) 
-            return false;
-      
-        localStorage.yourapp_date = date;
-        return true;
-      }
-      
-      function runOncePerDay(){
-        if( !hasOneDayPassed ) return false;
-      
-        firebase.database().ref().remove();
-      }
-      
       goal.innerHTML = 'Next goal: '+clickArray[clickArrayCount];
       
       displayScores();
+      
+      clickCount.innerHTML = 0;
       
       clickBtn.addEventListener('click', () => {
         // Add a click to the number of clicks
@@ -111,6 +161,14 @@
         }
       });
       
+      function save() {
+        if (name != '') {
+          saveScore(name, clicks);
+        } else {
+          saveScore('Anonymous', clicks);
+        }
+      }; 
+      
       saveBtn.addEventListener('click', () => {
         var name = prompt('Enter Name (Leave Blank For Anonymous)');
         if (name != '') {
@@ -121,11 +179,38 @@
       }); 
       
       function saveScore(name, score){
-        var newRef = ref.push();
-        newRef.set({
-          name: name,
-          score: score
-        });
+        if (scoreArray.length >=1){
+        for (var i = 0; i<scoreArray.length; i++){
+            if(name === scoreArray[i][1] && score >= scoreArray[i][2]){
+              firebase.database().ref('scores/'+String(scoreArray[i][0])).remove();
+              var newRef = ref.push();
+              newRef.set({
+                name: name,
+                score: score
+              });
+              alert('Score Saved!');
+              break;
+            } else if (name== scoreArray[i][1] && score <= scoreArray[i][2]){
+              alert('You have not beaten your old score!');
+              break;
+            } else { 
+              var newRef = ref.push();
+              newRef.set({
+                name: name,
+                score: score
+              });
+              break;
+            } 
+          }
+        } else {
+          var newRef = ref.push();
+              newRef.set({
+                name: name,
+                score: score
+          });
+          alert('Score Saved!');
+        }
+        
       }
       
       function displayScores() {
@@ -141,6 +226,7 @@
           var k = keys[i];
           var name = scores[k].name;
           var score = scores[k].score;
+          scoreArray.push([k, name, score]);
           scoreList.innerHTML += "<li>"+name+": "+score+"</li>"
         }
         
