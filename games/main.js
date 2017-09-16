@@ -69,7 +69,6 @@
         
         if (clicks === clickArray[clickArrayCount]) {
           clickPower = clickPowerArray[clickArrayCount];
-          alert('You have '+clickArray[clickArrayCount]+' clicks!');
           goal.innerHTML = 'Next goal: '+clickArray[clickArrayCount+1];
           clickArrayCount+=1;
         }
