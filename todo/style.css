@@ -1,0 +1,48 @@
+#form {
+  width: 70%;
+  height: 100%;
+  background: #87b5ff;
+  margin: 10% auto;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+}
+
+#signin {
+  margin: auto;
+  padding-top: 10px;
+}
+
+.hide {
+  display:none;
+}
+
+li {
+  border-style: solid;
+  border-color: #333;
+  color: #333;
+  margin-bottom: 10px;
+  text-align: left;
+  padding: 10px;
+  font-size: 20px;
+}
+
+ul button{
+  float: right;
+  margin-bottom: auto;
+}
+
+ul {
+  list-style: none;
+  margin: auto;
+}
+
+#todoInput {
+  display: inline;
+}
+
+
+#addTodo {
+  display: inline;
+}
