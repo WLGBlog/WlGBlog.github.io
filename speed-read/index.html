@@ -1,1 +1,147 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Speed Reader</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <style>
+        body{
+            font-family: Lato, Helvetica, sans-serif;
+            background: #333;
+            color:#fff;
+        }
+        #text{
+            width:300px;
+            height: 100px;
+        }
+        #submit{
+            width: 100px;
+            height: 50px;
+            color: #fff;
+            border:none;
+            border-radius: 10px;
+            font-size: 14px;
+            background: coral;
+            transition: 0.4s;
+        }
+        #submit:hover{
+            background: #f44030;
+            cursor: pointer;
+        }
+        #inputArea{
+            text-align: center;
+            display:block;
+        }
+        #readArea{
+            display: none;
+        }
+        #back{
+            border:none;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-top:0px;
+            margin-left: 0px;
+            min-width: 50px;
+            height: 25px;
+            color: #fff;
+            font-size: 14px;
+            background: coral;
+            transition: 0.4s;
+        }
+        #back:hover{
+            background: #f44030;
+            cursor: pointer;
+        }
+        #pause{
+            border:none;
+            border-radius: 10px;
+            font-size: 14px;
+            margin: auto auto;
+            min-width: 50px;
+            height: 25px;
+            color: #fff;
+            font-size: 14px;
+            background: coral;
+            transition: 0.4s;
+        }
+        #pause:hover{
+            background: #f44030;
+            cursor: pointer;
+        }
+        #play{
+            border:none;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-top: 0;
+            margin-left: 0;
+            min-width: 50px;
+            height: 25px;
+            color: #fff;
+            font-size: 14px;
+            background: coral;
+            transition: 0.4s;
+        }
+        #play:hover{
+            background: #f44030;
+            cursor: pointer;
+        }
+        #restart{
+            border:none;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-top: 0;
+            margin-left: 0;
+            min-width: 50px;
+            height: 25px;
+            color: #fff;
+            font-size: 14px;
+            background: coral;
+            transition: 0.4s;
+        }
+        #restart:hover{
+            background: #f44030;
+            cursor: pointer;
+        }
+        #currentWord{
+            text-align: center;
+            margin: 20% auto;
+        }
+        #controls{
+            margin-top: 0px;
+            text-align: center;
+        }
+        #speed{
+            width: 200px;
+            margin: auto;
+        }
+        #text{
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="inputArea">
+        <h1>Speed Reader</h1>
+        <label>Words Per Minute</label>
+        <input id="speed" class="form-control" type="number" value="300">
+        <br/>
+        <label>Text to speed read:</label>
+        <br/>
+        <textarea id="text" class="form-control" placeholder="Enter text.."></textarea> 
+        <br/>
+        <button id="submit" onclick="submit()">Speed Read!</button>
+    </div>
+    <div id="readArea">
+        <button id="back" onclick="reverseDisplay()">Back</button>
+        <h1 id="currentWord"></h1>
+        <div id="controls">
+            <button id="play" onclick="running=true;">Play</button>
+            <button id="pause" onclick="running=false;">Pause</button>
+            <button id="restart" onclick="restart()">Restart</button>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
