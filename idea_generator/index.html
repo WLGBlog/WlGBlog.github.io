@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Idea Generator</title>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>    
+    <script src="https://use.fontawesome.com/e5f4944e79.js"></script>   
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row getIdea">
+            <div class="col-md-6 center text-center">
+                <h1 class="mt-3 mb-3">Idea Generator</h1>
+                <!--Categories (For Later)-->
+                <button id="generateIdea" class="btn btn-primary btn-lg mb-5"><i class="fa fa-lightbulb-o fa-lg"></i> Generate An Idea!!!</button>
+                <div class="card bg-success">
+                    <div class="card-block p-3">
+                        <h4 id="ideaOutput"></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row submitIdea">
+            <div class="col-md-6 center text-center">
+                <h1 class="mb-3">Submit Project Idea</h1>
+                <form action="https://formspree.io/wegosci@gmail.com"
+                method="POST">
+                    <textarea class="form-control mb-2" name="message" placeholder="Project idea.."></textarea>
+                    <input class="btn btn-primary" type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <button class="btn btn-primary mb-3 addProjectBtn"><i class="fa fa-plus-circle"></i> Submit a project idea!</button>
+        <button class="btn btn-primary mb-3 backBtn">Back</button>        
+    </div>
+
+    <script src="jquery-3.2.1.slim.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

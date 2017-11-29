@@ -1,0 +1,26 @@
+.center {
+    margin: auto;
+}
+body{
+    background: #333;
+    color: #fff;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.getIdea{
+    display: block;
+}
+.submitIdea{
+    display: none;
+}
+.backBtn{
+    display: none;
+}
