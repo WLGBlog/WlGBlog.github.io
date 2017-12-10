@@ -58,7 +58,7 @@ function Ball(x,y,dx,dy,w) {
 var ball = generateBall();
 function P1_Paddle(){
   this.w = 30;
-  this.h = 150;
+  this.h = window.innerHeight/4;
   this.x = 30;
   this.y = window.innerHeight/2-this.h/2
   
@@ -110,7 +110,7 @@ function P2_Paddle(){
 var p2_paddle = new P2_Paddle();
 
 function generateBall() {
-  var w = 30;
+  var w = window.innerHeight/18;
   var x=window.innerWidth/2-w/2;
   var y=window.innerHeight/2-w/2;
   var dx = getRandomInt(-10,10)*1.25;
