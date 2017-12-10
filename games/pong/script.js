@@ -84,7 +84,7 @@ function P1_Paddle(){
 var p1_paddle = new P1_Paddle();
 function P2_Paddle(){
   this.w = 30;
-  this.h = 150;
+  this.h = window.innerHeight/4;
   this.x = window.innerWidth-60;
   this.y = window.innerHeight/2-this.h/2
   
