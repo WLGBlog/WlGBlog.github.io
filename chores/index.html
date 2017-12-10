@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script data-require="jquery@3.1.1" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous" />
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase-firestore.js"></script>  
+    <link rel="stylesheet" href="style.css" />
+    <title>Chores</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 mt-3">
+          <h1 class="text-center">Chores</h1>
+          <div id="login">
+            <div class="wrapper">
+              <form class="form-signin">
+                <h2 class="form-signin-heading">Login</h2>
+                <input id="txtEmail" type="text" class="mb-2 form-control" name="username" placeholder="Email Address" required="" autofocus="" />
+                <input id="txtPassword" type="password" class="mb-3 form-control" name="password" placeholder="Password" required="" />
+                <button id="loginBtn" class="btn btn-lg btn-primary btn-block">Login</button>
+              </form>
+            </div>
+          </div>
+          <div id="app">
+            <button class="btn btn-danger" id="btnLogout">Logout</button>
+            <hr>
+            <div id="kids">
+            </div>
+            <div id="parents" class="list-group"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+
+</html>
