@@ -27,16 +27,10 @@ function getCurrentTime(newTime) {
   var newMinutesNum = (newHoursNum-newHours)*100;
   var newMinutes = Math.floor(newMinutesNum);
   var newSecondsNum = (newMinutesNum-newMinutes)*100;
-  var newSeconds = Math.round(100*newSecondsNum)/100;
-  if(newSeconds.countDecimals() == 2){
-     if(newSeconds.toString().length == 4){
-        newSeconds = '0'+newSeconds;
-     }
-  } else if(newSeconds.countDecimals() == 1){
-     if(newSeconds.toString().length == 3){
-        newSeconds = '0'+newSeconds;
-     }
-  } 
+  var newSeconds = Math.floor(newSecondsNum);
+  if(newSeconds.toString().length == 1){
+    newSeconds = '0'+newSeconds;
+  }
   return "<span><span class='text-primary'>"+(newHours.toString().length==1?'0'+newHours:newHours)+'</span>:<span class="text-success">'+(newMinutes.toString().length==1?'0'+newMinutes:newMinutes)+"</span>:<span class='text-danger'>"+newSeconds+"</span></span>";
 }
 
@@ -47,10 +41,9 @@ function get24Time() {
         hours: now.getHours(),
         minutes: now.getMinutes(),
         seconds: now.getSeconds(),
-        millis: now.getMilliseconds()
     };
 
-    return "<span><span class='text-primary'>"+(time.hours.toString().length==1?'0'+time.hours:time.hours)+'</span>:<span class="text-success">'+(time.minutes.toString().length==1?'0'+time.minutes:time.minutes)+"</span>:<span class='text-danger'>"+(time.seconds.toString().length==1?'0'+time.seconds:time.seconds)+'.'+(time.millis.toString().substr(0,2))+"</span></span>";    
+    return "<span><span class='text-primary'>"+(time.hours.toString().length==1?'0'+time.hours:time.hours)+'</span>:<span class="text-success">'+(time.minutes.toString().length==1?'0'+time.minutes:time.minutes)+"</span>:<span class='text-danger'>"+(time.seconds.toString().length==1?'0'+time.seconds:time.seconds)+"</span></span>";    
 }
 
 function displayTime() {
