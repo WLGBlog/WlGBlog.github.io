@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Decimal Time</title>
+</head>
+<body>
+    <div id="timeDiv"></div>
+    <script>
+        function getTime() {
+        var today = new Date();
+
+        var time = {
+            hours: today.getHours(),
+            minutes: today.getMinutes(),
+            seconds: today.getSeconds()
+        };
+            
+        var timeAsNumber = today.getMilliseconds() + (1000*(time.seconds + (60 * (time.minutes + (60 * time.hours)))));
+        
+        var newTime = timeAsNumber * 100000000 / 86400000;
+            
+        var currentTime = getCurrentTime(newTime);
+        
+        return currentTime;
+        }
+
+        function getCurrentTime(newTime) {
+            var newHoursNum = newTime/10000000;
+            var newHours = Math.floor(newHoursNum);
+            var newMinutesNum = (newHoursNum-newHours)*100;
+            var newMinutes = Math.floor(newMinutesNum);
+            var newSecondsNum = (newMinutesNum-newMinutes)*100;
+            var newSeconds = Math.floor(newSecondsNum);
+            if(newSeconds.toString().length == 1){
+                newSeconds = '0'+newSeconds;
+            }
+            return "<span><span class='text-primary'>"+(newHours.toString().length==1?'0'+newHours:newHours)+'</span>:<span class="text-success">'+(newMinutes.toString().length==1?'0'+newMinutes:newMinutes)+"</span>:<span class='text-danger'>"+newSeconds+"</span></span>";
+        }
+
+        function displayTime() {
+            document.getElementById('timeDiv').innerHTML = getTime();
+
+        }
+
+        setInterval(displayTime, 86400/100000);
+
+    </script>
+</body>
+</html>
