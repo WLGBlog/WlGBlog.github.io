@@ -3,3 +3,19 @@
     grid-template-columns: 1fr 1fr;
     grid-gap: 1em;
 }
+
+.timeTxt {
+    font-size: 40px;
+}
+
+@media only screen and (max-width: 768px) {
+    .timeTxt {
+        font-size: 30px;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .timeTxt {
+        font-size: 20px;
+    }
+}
