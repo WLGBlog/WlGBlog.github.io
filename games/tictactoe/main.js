@@ -183,7 +183,7 @@ function start(total_games) {
         username = "Guest";
     } 
 
-    document.getElementById('chooseGame').style.display="none";
+    document.getElementById('join').style.display="none";
 
 
     let usersRef = db.collection("users");
@@ -248,6 +248,8 @@ function quitRoom(roomId){
     loader.style.display = "none";
     let join = document.getElementById('join');
     join.style.display = "block";
+    let chooseGame = document.getElementById('chooseGame');
+    chooseGame.style.display = "grid";
     let gameDiv = document.getElementById('game');
     gameDiv.style.display = "none";
     document.getElementById('chooseGame').style.display="block";
