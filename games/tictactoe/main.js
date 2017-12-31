@@ -178,6 +178,11 @@ function start(total_games) {
     total_games=total_games;
     
     username = document.getElementById('usernameInp').value;
+
+    if(username="") {
+        username = "Guest";
+    } 
+
     document.getElementById('chooseGame').style.display="none";
 
 
