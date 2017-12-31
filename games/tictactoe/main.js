@@ -215,6 +215,8 @@ function findRoom(total_games) {
     let roomsRef = db.collection("rooms");
     let query = roomsRef.where("filled","==",false).where("total_games","==",total_games).get().then(function(snap){
         if(snap.docs[0]){
+            document.getElementById('p1').innerHTML = snap.docs[0].data().user1+": X";
+            document.getElementById('p2').innerHTML = "You: O";
             roomId = snap.docs[0].id;
             roomsRef.doc(roomId).update({
                 filled: true,
@@ -282,6 +284,8 @@ function waitForGame(roomId, total_games) {
     var ref = db.collection('rooms').doc(roomId);
     ref.onSnapshot(function(doc){
         if(doc.data().user2 && doc.exists){
+            document.getElementById('p2').innerHTML = doc.data().user2+": O";
+            document.getElementById('p1').innerHTML = "You: X";
             startGame(roomId, 0, total_games);
         }
     });
@@ -313,6 +317,14 @@ function startGame(roomId, player, total_games) {
         }
         
     });
+    
+}
+
+window.onbeforeunload = closingCode;
+function closingCode(){
+    var ref = db.collection('rooms').doc(game.id);
+    ref.delete();    
+   return null;
 }
 
 function clicked(num) {
@@ -337,3 +349,4 @@ function updateDB(pos,turn,current_game,p1_score,p2_score) {
         p2_score: p2_score
     });  
 }
+
