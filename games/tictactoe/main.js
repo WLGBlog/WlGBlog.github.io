@@ -98,6 +98,9 @@ function Game(roomId, player) {
         } else if(player_won!=-1) {
             document.getElementById('result').innerHTML="You Lost!";
             quitRoom(this.id);
+        } else if (player_won==-1 && turn==9){
+            document.getElementById('result').innerHTML="It's a tie!";
+            quitRoom(this.id);
         }
     }
     this.pure_update = function() {
