@@ -139,6 +139,7 @@ function Game(roomId, player, total_games) {
 
         if (player_won==this.player && player_won!=-1 && this.total_games==1) {
             document.getElementById('result').innerHTML="You Won!";
+            addWin();
             quitRoom(this.id);
         } else if(player_won!=-1 && this.total_games==1) {
             document.getElementById('result').innerHTML="You Lost!";
@@ -350,3 +351,18 @@ function updateDB(pos,turn,current_game,p1_score,p2_score) {
     });  
 }
 
+
+
+function addWin() {
+    let ref = db.collection("users");
+    let query = ref.where("username","==",username).get().then(function(snap){
+        if(snap.docs[0].exists && username!="Guest"){
+            let docId = snap.docs[0].id;
+            let wins = snap.docs[0].data().wins;
+            let newRef = db.collection("users").doc(docId);
+            newRef.update({
+                wins: wins+1
+            });
+        }
+    });
+}
