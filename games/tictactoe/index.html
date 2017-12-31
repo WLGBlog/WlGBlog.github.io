@@ -16,16 +16,18 @@
                     <h1 id="result">Tic Tac Toe Multiplayer!</h1>
                     <hr>
                     <div class="input-group">
-                        <input type="text" id="usernameInp" class="form-control" placeholder="Enter name..">    
-                        <div class="input-group-append">
-                            <button class="btn btn-success" onclick="start()">Join A Game!</button>    
-                        </div>                        
+                        <input type="text" id="usernameInp" class="form-control" placeholder="Enter name..">                         
                     </div>
                     <hr>
-                    <div id="waitGame">
-                        <h3 class="mb-2">Waiting For A Game..</h3>
-                        <div class="loader"></div>
+                    <div id="chooseGame">
+                        <button class="btn btn-success btn-lg mb-2" onclick="start(1)">Quick Play: 1 Game</button>
+                        <button class="btn btn-warning btn-lg mb-2">Medium: 3 Games (Coming Soon)</button>
+                        <button class="btn btn-danger btn-lg">Hard: 5 Games (Coming Soon)</button>                        
                     </div>
+                </div>
+                <div id="waitGame">
+                    <h3 class="mb-2">Waiting For A Game..</h3>
+                    <div class="loader"></div>
                 </div>
                 <div id="game">
                     <div class="board">

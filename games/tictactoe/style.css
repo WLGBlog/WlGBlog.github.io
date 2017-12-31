@@ -3,6 +3,11 @@ body {
     margin: 0;
 }
 
+#chooseGame {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
 #game {
     display: none;
 }
