@@ -82,3 +82,21 @@ body {
 #waitGame {
     display: none;
 }
+
+@media only screen and (max-width: 450px) {
+    .ttt-btn {
+        width: 70px;
+        height: 70px;
+        font-size: 20px;
+    }
+    .ttt-btn-x {
+        width: 70px;
+        height: 70px;
+        font-size: 20px;
+    }
+    .ttt-btn-o {
+        width: 70px;
+        height: 70px;
+        font-size: 20px;
+    }
+}
