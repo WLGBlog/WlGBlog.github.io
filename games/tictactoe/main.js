@@ -178,6 +178,7 @@ function start(total_games) {
     total_games=total_games;
     
     username = document.getElementById('usernameInp').value;
+    document.getElementById('chooseGame').style.display="none";
 
 
     let usersRef = db.collection("users");
@@ -244,6 +245,7 @@ function quitRoom(roomId){
     join.style.display = "block";
     let gameDiv = document.getElementById('game');
     gameDiv.style.display = "none";
+    document.getElementById('chooseGame').style.display="block";
     
 
     var ref = db.collection('rooms').doc(game.id);
