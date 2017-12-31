@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12 text-center">
+                <div id="join">
+                    <h1 id="result">Tic Tac Toe Multiplayer!</h1>
+                    <hr>
+                    <div class="input-group">
+                        <input type="text" id="usernameInp" class="form-control" placeholder="Enter name..">    
+                        <div class="input-group-append">
+                            <button class="btn btn-success" onclick="start()">Join A Game!</button>    
+                        </div>                        
+                    </div>
+                    <hr>
+                    <div id="waitGame">
+                        <h3 class="mb-2">Waiting For A Game..</h3>
+                        <div class="loader"></div>
+                    </div>
+                </div>
+                <div id="game">
+                    <div class="board">
+                        <button class="btn-1 ttt-btn" onclick="clicked(0)">+</button>
+                        <button class="btn-2 ttt-btn" onclick="clicked(1)">+</button>
+                        <button class="btn-3 ttt-btn" onclick="clicked(2)">+</button>
+                        <button class="btn-4 ttt-btn" onclick="clicked(3)">+</button>
+                        <button class="btn-5 ttt-btn" onclick="clicked(4)">+</button>
+                        <button class="btn-6 ttt-btn" onclick="clicked(5)">+</button>
+                        <button class="btn-7 ttt-btn" onclick="clicked(6)">+</button>
+                        <button class="btn-8 ttt-btn" onclick="clicked(7)">+</button>
+                        <button class="btn-9 ttt-btn" onclick="clicked(8)">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>    
+    <script src="main.js"></script>
+</body>
+</html>
