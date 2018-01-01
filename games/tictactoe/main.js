@@ -31,6 +31,7 @@ var total_games=0;
 var pos = [-1,-1,-1,-1,-1,-1,-1,-1,-1];
 
 let username;
+var wins;
 var roomId;
 
 var game;
@@ -190,6 +191,7 @@ function start(total_games) {
     let usersRef = db.collection("users");
     let query = usersRef.where("username","==",username).get().then(function(snap){
         if(snap.docs[0]){
+            wins = snap.docs[0].data().wins;
             findRoom(total_games);
         } else {
             localStorage.setItem("username", username);        
@@ -358,10 +360,10 @@ function addWin() {
     let query = ref.where("username","==",username).get().then(function(snap){
         if(snap.docs[0].exists && username!="Guest"){
             let docId = snap.docs[0].id;
-            let wins = snap.docs[0].data().wins;
+            wins = snap.docs[0].data().wins+1;
             let newRef = db.collection("users").doc(docId);
             newRef.update({
-                wins: wins+1
+                wins: wins
             });
         }
     });
