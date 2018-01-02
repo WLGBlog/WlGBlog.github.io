@@ -1,0 +1,9 @@
+{
+"TOTAL_MEMORY": 268435456,
+"dataUrl": "cube_run (1).data.unityweb",
+"asmCodeUrl": "cube_run (1).asm.code.unityweb",
+"asmMemoryUrl": "cube_run (1).asm.memory.unityweb",
+"asmFrameworkUrl": "cube_run (1).asm.framework.unityweb",
+"splashScreenStyle": "Dark",
+"backgroundColor": "#222C36"
+}
