@@ -8,6 +8,12 @@ body {
   min-width: 250px;
 }
 
+.formDivSignUp {
+  margin: 0% auto;
+  width: 55%;
+  min-width: 250px;
+}
+
 .h-5 {
   height: 50px;
 }
@@ -49,6 +55,7 @@ body {
 }
 
 #loginDiv {
+  margin: 0% auto;
   display: none;
 }
 
