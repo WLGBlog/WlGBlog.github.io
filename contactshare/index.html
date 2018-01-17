@@ -2,23 +2,24 @@
 <html>
 
   <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
-    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
-    <div class="container">
+    <div class="container text-center">
       <button class="btn btn-danger mt-2" id="backBtn">Back</button>
-      <button class="mt-2 btn btn-success" id="signupBtn">Sign Up</button>
+      <button class="mt-2 btn btn-success float-left" id="signupBtn">Sign Up</button>
       <button class="mt-2 float-right btn btn-primary" id="loginBtn">Login</button>
       <!--Code Div-->
-      <div class="row text-center float-center" id="codeDiv">
-        <div class="col-md-6 text-center float-center" id="col">
-          <div class="formDiv">
+      <div class="row text-center" id="codeDiv">
+        <div class="col-md-6 text-center" id="col">
+          <div class="formDiv text-center">
+            <div class="mb-5 h-5"></div>
             <div class="alert alert-danger" id="codeAlert"></div>
-            <div class="input-group">
+            <div class="input-group" id="codeInpGroup">
               <input id="codeInput" class="form-control" placeholder="Enter Code...">
               <button id="submitCode" class="input-group-addon btn btn-info" onclick="findContact()">Submit</button>
             </div>
