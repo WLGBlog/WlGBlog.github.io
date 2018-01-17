@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link data-require="bootstrap@*" data-semver="4.0.5" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" />
+    <script data-require="jquery@*" data-semver="3.1.1" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <button class="btn btn-danger mt-2" id="backBtn">Back</button>
+      <button class="mt-2 btn btn-success" id="signupBtn">Sign Up</button>
+      <button class="mt-2 float-right btn btn-primary" id="loginBtn">Login</button>
+      <!--Code Div-->
+      <div class="row text-center float-center" id="codeDiv">
+        <div class="col-md-6 text-center float-center" id="col">
+          <div class="formDiv">
+            <div class="alert alert-danger" id="codeAlert"></div>
+            <div class="input-group">
+              <input id="codeInput" class="form-control" placeholder="Enter Code...">
+              <button id="submitCode" class="input-group-addon btn btn-info" onclick="findContact()">Submit</button>
+            </div>
+          </div>
+          <div id="infoDiv" class="mt-5 card bg-info">
+            <div class="card-block text-white">
+              <h4>User Info</h4>
+              <hr>
+              <div class="alert alert-success" id="copiedAlert">
+                Copied Successfully!
+              </div>
+              <div id="nameTxt"></div>
+              <div id="emailTxt"></div>
+              <div id="phoneTxt"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--login screen-->
+      <div class="row text-center formDiv" id="loginDiv">
+        <div class="col-md-6 text-center text-white">
+          <div class="alert alert-danger" id="loginAlert">
+          </div>
+          <h2 class="lato mt-2">Login</h2>
+          <input id="loginEmailInp" type="email" class="form-control mb-1" placeholder="Enter Email...">
+          <input id="loginPassInp" type="password" class="form-control" placeholder="Enter Password...">
+          <button class="mt-2 float-center btn-md btn btn-primary" id="loginUserBtn">Login</button>
+        </div>
+      </div>
+      <!--sign up screen-->
+      <div class="row text-center formDiv" id="signupDiv">
+        <div class="col-md-6 text-center text-white">
+          <div class="alert alert-danger" id="signupAlert">
+          </div>
+          <h2 class="lato mt-2">Sign Up</h2>
+          <input id="signupEmailInp" type="email" class="form-control mb-1" placeholder="Enter Email...">
+          <input id="signupPassInp" type="password" class="form-control" placeholder="Enter Password...">
+          <button class="mt-2 float-center btn-md btn btn-success" id="signupUserBtn">Sign Up</button>
+        </div>
+      </div>
+      <div id="loginDashboard" class="text-center text-white">
+        <h2 class="mt-2">Dashboard</h2>
+        <input class="form-control mb-2 mt-5" id="loginCodeDisplay" placeholder="Secret Code">
+        <input class="form-control mb-2" id="loginNameDisplay" placeholder="Name">
+        <input class="form-control mb-2" id="loginPhoneDisplay" placeholder="Phone Number">
+        <input class="form-control mb-2" id="loginEmailDisplay" placeholder="Email">
+        <button class="btn btn-info btn-lg" onclick="save(this)" id="saveBtn">Save</button>
+      </div>
+      <div id="signupDashboard">
+        <form class="text-center mt-4" id="userDetails">
+          <input class="form-control mb-2" placeholder="Enter Code (The secret code to access your contact)" id="signupCodeDisplay" required>
+          <input class="form-control mb-2" placeholder="Enter Name" id="signupNameDisplay">
+          <input class="form-control mb-2" placeholder="Enter Phone Number (Optional)" type="tel" id="signupPhoneDisplay">
+          <input class="form-control mb-2" placeholder="Enter Email" type="email" id="signupEmailDisplay" required>
+          <button class="btn btn-success btn-lg" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase-firestore.js"></script>
+    <script src="script.js"></script>
+  </body>
+
+</html>
