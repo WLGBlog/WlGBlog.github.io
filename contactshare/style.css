@@ -8,14 +8,30 @@ body {
   min-width: 250px;
 }
 
+.h-5 {
+  height: 50px;
+}
+
 .lato {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
 }
 
+.block {
+  display: block;
+}
+
+#codeDiv {
+  margin: 0% auto;
+}
+
 #infoDiv {
   margin: auto;
   max-width: 300px;
+}
+
+#codeInpGroup {
+  margin: 0px auto;
 }
 
 #col {
@@ -49,7 +65,29 @@ body {
 }
 #codeInput {
   display: block;
+  max-width: 500px;
+  min-width: 100px;
 }
+
+@media screen and (max-width: 350px) {
+  #codeInpGroup {
+    width: 200px;
+  }
+  #codeDiv {
+    left: 0px;
+    padding-left: 5%;
+    padding-right: 49%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  #codeDiv {
+    left: 0px;
+    padding-left: 10%;
+    padding-right: 59%;
+  }
+}
+
 #submitCode {
   display: inline-block;
 }
