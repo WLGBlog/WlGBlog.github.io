@@ -1,0 +1,67 @@
+body {
+  background: #333;
+}
+
+.formDiv {
+  margin: 20% auto;
+  width: 55%;
+  min-width: 250px;
+}
+
+.lato {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+}
+
+#infoDiv {
+  margin: auto;
+  max-width: 300px;
+}
+
+#col {
+  margin: auto;
+}
+#codeAlert {
+  display: none;
+}
+
+#loginAlert {
+  display: none;
+}
+#signupAlert {
+  display: none;
+}
+
+#loginDiv {
+  display: none;
+}
+
+#signupDiv {
+  display: none;
+}
+
+#backBtn {
+  display: none;
+}
+
+#infoDiv {
+  display: none;
+}
+#codeInput {
+  display: block;
+}
+#submitCode {
+  display: inline-block;
+}
+
+#signupDashboard {
+  display: none;
+}
+
+#loginDashboard {
+  display: none;
+}
+
+#copiedAlert {
+  display: none;
+}
