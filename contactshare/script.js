@@ -36,6 +36,8 @@ $('#signupBtn').click(function(){
   $('#signupDashboard').hide();
   $('#loginBtn').show();
   $('#backBtn').show();
+  $('#backBtn').addClass('float-left');
+  $('#backBtn').removeClass('float-right');
   document.getElementById('backBtn').classList.remove('float-right');
   $('#loginDiv').hide();
   $('#codeDiv').hide();
@@ -49,6 +51,8 @@ $('#loginBtn').click(function(){
     $('#signupDashboard').hide();
     $('#signupBtn').show();
     $('#backBtn').show();
+    $('#backBtn').addClass('float-right');
+  $('#backBtn').removeClass('float-left');
     $('#loginBtn').hide();
     document.getElementById('backBtn').classList.add('float-right');
     $('#signupDiv').hide();
