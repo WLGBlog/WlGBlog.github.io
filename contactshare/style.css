@@ -14,6 +14,14 @@ body {
   min-width: 250px;
 }
 
+#signupErrorAlert {
+  display: none;
+}
+
+#dashErrorAlert {
+  display: none;
+}
+
 .h-5 {
   height: 50px;
 }
