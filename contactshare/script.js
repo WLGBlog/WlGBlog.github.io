@@ -14,6 +14,10 @@ db.collection("users").get = function() {
   return;
 };
 
+db.get = function() {
+  return;
+};
+
 db.delete = function() {
   return;
 }
@@ -145,14 +149,29 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 
 function save(elmnt) {
   let newCode = $('#loginCodeDisplay').val();
-  let newLocalName = $('#loginNameDisplay').val();
-  let newEmail = $('#loginEmailDisplay').val();
-  let newPhone = $('#loginPhoneDisplay').val();
-  db.collection("users").doc(elmnt.id).update({
-    code: (newCode!==""?newCode:user.code),
-    name: (newLocalName!==""?newLocalName:user.localName),
-    email: (newEmail!==""?newEmail:user.email),
-    phone: (newPhone!==""?newPhone:user.phone),
+  db.collection("users").where("code", "==", newCode).get().then(snap=>{
+    for(let i = 0; i< snap.docs.length; i++) {
+      if(user.uid != snap.docs[i].data().uid){
+        snap.docs.splice(i,1);
+      }
+    }
+    if(snap.docs.length > 0){
+      $('#dashErrorAlert').show();
+      setTimeout(function(){
+        $('#dashErrorAlert').fadeOut();
+      }, 3000);
+    } else {
+      let newLocalName = $('#loginNameDisplay').val();
+      let newEmail = $('#loginEmailDisplay').val();
+      let newPhone = $('#loginPhoneDisplay').val();
+      db.collection("users").doc(elmnt.id).update({
+        code: (newCode!==""?newCode:user.code),
+        name: (newLocalName!==""?newLocalName:user.localName),
+        email: (newEmail!==""?newEmail:user.email),
+        phone: (newPhone!==""?newPhone:user.phone),
+      });
+    }
+
   });
 }
 
@@ -182,24 +201,40 @@ $('#userDetails').submit(e=>{
   e.preventDefault();
   let uid = user.user.uid;
   let code = $('#signupCodeDisplay').val();
-  let name = $('#signupNameDisplay').val();
-  let email = $('#signupEmailDisplay').val();
-  let phone = $('#signupPhoneDisplay').val();
-  
-  db.collection("users").add({
-    uid: uid,
-    code: code,
-    name: name,
-    email: email,
-    phone: phone
-  }).then(function(docRef){
-      user.db_id = docRef.id;
+  db.collection("users").where("code", "==", code).get().then(snap=>{
+    for(let i = 0; i< snap.docs.length; i++) {
+      if(user.uid != snap.docs[i].data().uid){
+        snap.docs.splice(i,1);
+      }
+    }
+    if(snap.docs.length > 0){
+       $('#signupErrorAlert').show();
+      setTimeout(function(){
+        $('#signupErrorAlert').fadeOut();
+      }, 3000);
+    } else {
+      let name = $('#signupNameDisplay').val();
+      let email = $('#signupEmailDisplay').val();
+      let phone = $('#signupPhoneDisplay').val();
+      
+      db.collection("users").add({
+        uid: uid,
+        code: code,
+        name: name,
+        email: email,
+        phone: phone
+      }).then(function(docRef){
+          user.db_id = docRef.id;
+      });
+      
+      $('#loginDashboard').show();
+      displayDetails();
+      $('#signupDashboard').hide();
+      $('#signupDiv').hide();
+    }
+
   });
   
-  $('#loginDashboard').show();
-  displayDetails();
-  $('#signupDashboard').hide();
-  $('#signupDiv').hide();
 });
 
 function findContact() {
