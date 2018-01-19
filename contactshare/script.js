@@ -156,12 +156,7 @@ function save(elmnt) {
         index = i;
       }
     }
-    if(snap.docs[0].exists && user.user.uid != snap.docs[0].data().uid){
-      $('#dashErrorAlert').show();
-      setTimeout(function(){
-        $('#dashErrorAlert').fadeOut();
-      }, 3000);
-    } else {
+    if (snap.docs.length===0) {
       let newLocalName = $('#loginNameDisplay').val();
       let newEmail = $('#loginEmailDisplay').val();
       let newPhone = $('#loginPhoneDisplay').val();
@@ -172,6 +167,12 @@ function save(elmnt) {
         phone: (newPhone!==""?newPhone:user.phone),
       });
     }
+    else if(user.user.uid != snap.docs[0].data().uid){
+      $('#dashErrorAlert').show();
+      setTimeout(function(){
+        $('#dashErrorAlert').fadeOut();
+      }, 3000);
+    } 
 
   });
 }
