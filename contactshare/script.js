@@ -150,12 +150,13 @@ firebase.auth().onAuthStateChanged(firebaseUser => {
 function save(elmnt) {
   let newCode = $('#loginCodeDisplay').val();
   db.collection("users").where("code", "==", newCode).get().then(snap=>{
+    index = 0;
     for(let i = 0; i< snap.docs.length; i++) {
-      if(user.uid != snap.docs[i].data().uid){
-        snap.docs.splice(i,1);
+      if(user.uid == snap.docs[i].data().uid){
+        index = i;
       }
     }
-    if(snap.docs.length > 0){
+    if(snap.docs[0].exists && user.user.uid != snap.docs[0].data().uid){
       $('#dashErrorAlert').show();
       setTimeout(function(){
         $('#dashErrorAlert').fadeOut();
@@ -203,7 +204,7 @@ $('#userDetails').submit(e=>{
   let code = $('#signupCodeDisplay').val();
   db.collection("users").where("code", "==", code).get().then(snap=>{
     for(let i = 0; i< snap.docs.length; i++) {
-      if(user.uid != snap.docs[i].data().uid){
+      if(user.uid == snap.docs[i].data().uid){
         snap.docs.splice(i,1);
       }
     }
