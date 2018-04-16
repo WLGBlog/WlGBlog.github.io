@@ -1,0 +1,30 @@
+body{
+    background: #333;
+    color: #fff;
+}
+.md-row{
+    margin: auto;
+}
+
+.selection{
+    width: 300px;
+    margin: auto;
+}
+
+#convertToDNA {
+    display: none;
+}
+#DNAInput{
+    width: 400px;
+    margin: auto;
+    max-height: 200px;
+}
+
+#convertFromDNA{
+    display: none;
+}
+.btn-nostyle{
+    background: none;
+    color: white;
+    border: 0;
+}

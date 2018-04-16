@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DNA Data Conversion</title>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 md-row text-center">
+                <h1 class="mb-3 mt-3">DNA Data Conversion</h1>
+                <div id="menu" class="mb-3">
+                    <div class="card bg-secondary">
+                        <div class="card-block p-3">
+                            <button id="convertToDNABtn" class="btn btn-light">Convert <strong>To</strong> DNA</button>
+                            <button id="convertFromDNABtn" class="btn btn-light">Convert <strong>From</strong> DNA</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="convertToDNA">
+                    <!--Input -->
+                    <div class="card bg-primary mb-3">
+                        <div class="card-block p-3">
+                            <label>Data Type:</label>
+                            <select id="dataType" class="mb-3 form-control selection">
+                                <option value="text">Text / Numbers</option>
+                                <option value="image">Image</option>
+                            </select>
+                            <label>Data to convert:</label>
+                            <div id="inputArea"></div>
+                        </div>
+                    </div>
+                    <!--Output -->
+                    <div class="card bg-danger">
+                        <div class="card-block p-3">
+                            <label id='hiddenOutput'>Output:</label>
+                            <button class="btn-nostyle copy-button" data-clipboard-action="copy" data-clipboard-target="#output"><i class="icon-copy"></i></button>
+                            <div id="output" class="mt-1"></div>
+                        </div>
+                    </div>
+                </div>           
+                <div id="convertFromDNA">
+                    <div class="card bg-warning mb-3">
+                        <div class="card-block p-3">
+                            <label>Enter DNA Code:</label>
+                            <textarea id="DNAInput" class="form-control" placeholder="Enter DNA.."></textarea>    
+                        </div>    
+                    </div>    
+                    <div class="card bg-info">
+                        <div class="card-block p-3">
+                            <label>Output:</label>    
+                            <div id="textOutput"></div>
+                        </div>    
+                    </div>    
+                </div>     
+            </div>
+        </div>
+    </div>
+    
+  
+    <script src="jquery-3.2.1.slim.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
