@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Solid News</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card bg-light mt-5 mb-4">
+            <div class="card-body">
+              <h2>Solid News</h2>
+              <select id="category" class="form-control">
+                <option value="science">Science</option>
+                <option value="technology">Technology</option>
+                <option value="general">General</option>
+                <option value="health">Health</option>
+                <option value="business">Business</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="sports">Sports</option>
+              </select>
+            </div>
+          </div>
+          <!--<div class="card bg-light mb-2">
+            <img class="card-img-top" src="https://mediarevolt.org/plugins/livenews/image/news.jpg">
+            <div class="card-body">
+              <h5 class="card-title">Card title</h5>
+              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div> -->
+          <div id="articles"></div>
+          <div class="buff"></div>
+        </div> 
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
