@@ -1,4 +1,8 @@
 let category = $('#category');
+if(localStorage.getItem("cat")) {
+    category.val(localStorage.getItem("cat"));
+}
+
 
 updateNews(category.val());
 
@@ -29,5 +33,6 @@ function updateNews(cat) {
 }
 
 category.change(()=>{
+    localStorage.setItem("cat", category.val());
     updateNews(category.val())
 });
